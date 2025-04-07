@@ -2,12 +2,16 @@
 
 
 **DATE:**
+07-04-2025
 
 **NAME:**
+Mitran R
 
 **ROLL NO:**
+212224040192
 
 **DEPARTMENT:**
+BE CSE
 
 ## Aim
 
@@ -102,10 +106,47 @@ IR technology is used in a wide range of wireless applications which includes re
 ## STM 32 CUBE PROGRAM
 
 ```
-// Your STM 32 CUBE Program code here
+#include "main.h"
+#include "stdbool.h"
+bool IRSENSOR;
+void irpair();
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+  while (1)
+  {
+    irpair();
+  }
+}
+void irpair()
+{
+IRSENSOR=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+ if(IRSENSOR==0)
+{
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+	//HAL_Delay(1000);
+	//HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+	//HAL_Delay(1000);
+}
+else
+{
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+	//HAL_Delay(1000);
+}
+}
+
 ```
 
 ## OUTPUT
+ON:
+![WhatsApp Image 2025-04-07 at 14 18 28_301237f8](https://github.com/user-attachments/assets/b6f3b009-4e4a-46d4-b9e0-da8df1f40bdc)
+
+OFF:
+![WhatsApp Image 2025-04-07 at 14 18 18_edd64387](https://github.com/user-attachments/assets/98cd9592-fbdc-412f-afaa-c4ec00194368)
 
 ## Result
 
